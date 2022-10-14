@@ -16,6 +16,7 @@ public class SpawnManagerX : MonoBehaviour
 
 
     public GameObject player; 
+    public static float enemySpeed = 10;
 
     // Update is called once per frame
     void Update()
@@ -49,12 +50,14 @@ public class SpawnManagerX : MonoBehaviour
         }
 
         // Spawn number of enemy balls based on wave number
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < enemiesToSpawn; i++)
         {
             Instantiate(enemyPrefab, GenerateSpawnPosition(), enemyPrefab.transform.rotation);
         }
 
-        waveCount++;
+       
+        enemySpeed= waveCount++ * 10;
+
         ResetPlayerPosition(); // put player back at start
 
     }
